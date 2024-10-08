@@ -10,8 +10,9 @@ public class Main {
             System.out.println("\nAddress Book Menu:");
             System.out.println("1. Add new contact");
             System.out.println("2. Edit existing contact");
-            System.out.println("3. Display all contacts");
-            System.out.println("4. Exit");
+            System.out.println("3. delete existing contact");
+            System.out.println("4. Display all contacts");
+            System.out.println("5. Exit");
             System.out.print("Enter your choice: ");
 
             int choice = scanner.nextInt();
@@ -25,9 +26,12 @@ public class Main {
                     editExistingContact();
                     break;
                 case 3:
-                    addressBook.display();
+                    deleteExistingContact();
                     break;
                 case 4:
+                    addressBook.display();
+                    break;
+                case 5:
                     running = false;
                     System.out.println("Exiting Address Book. Goodbye!");
                     break;
@@ -93,6 +97,27 @@ public class Main {
             System.out.println("Contact updated successfully!");
         } else {
             System.out.println("Failed to update contact.");
+        }
+    }
+
+    private static void deleteExistingContact(){
+        System.out.println("\nEnter the name of the contact to edit:");
+        System.out.print("First Name: ");
+        String firstName = scanner.nextLine();
+        System.out.print("Last Name: ");
+        String lastName = scanner.nextLine();
+
+        Contact existingContact = addressBook.findContact(firstName, lastName);
+        if (existingContact == null) {
+            System.out.println("Contact not found.");
+            return;
+        }
+
+        boolean success = addressBook.deleteContact(firstName, lastName);
+        if (success) {
+            System.out.println("Contact deleted successfully!");
+        } else {
+            System.out.println("Failed to delete contact.");
         }
     }
 

@@ -23,6 +23,15 @@ public class AddressBook {
         return null;
     }
 
+    public boolean deleteContact(String firstName, String lastName) {
+        Contact existingContact = findContact(firstName, lastName);
+        if (existingContact != null) {
+            al.remove(existingContact);
+            return true;
+        }
+        return false;
+    }
+
     public boolean editContact(String firstName, String lastName, Contact updatedContact) {
         Contact existingContact = findContact(firstName, lastName);
         if (existingContact != null) {
