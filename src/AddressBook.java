@@ -1,6 +1,6 @@
 import java.util.ArrayList;
 
-public class Address {
+public class AddressBook {
     ArrayList<Contact> al = new ArrayList<Contact>();
 
     public void add(Contact contact){
