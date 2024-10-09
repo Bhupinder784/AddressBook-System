@@ -3,16 +3,20 @@ import java.util.Scanner;
 public class Main {
     private static Scanner scanner = new Scanner(System.in);
     private static AddressBook addressBook = new AddressBook();
+    private static AddressBookSystem addressBookSystem = new AddressBookSystem();
 
     public static void main(String[] args) {
         boolean running = true;
         while (running) {
-            System.out.println("\nAddress Book Menu:");
-            System.out.println("1. Add new contact");
+            System.out.println("\n--- Address Book System Menu ---");
+            System.out.println("1. Add new Contact to Address Book");
             System.out.println("2. Edit existing contact");
             System.out.println("3. delete existing contact");
             System.out.println("4. Display all contacts");
-            System.out.println("5. Exit");
+
+            System.out.println("5. Add new Address Book");
+            System.out.println("6. Display all Address Books");
+            System.out.println("7. Exit");
             System.out.print("Enter your choice: ");
 
             int choice = scanner.nextInt();
@@ -32,6 +36,14 @@ public class Main {
                     addressBook.display();
                     break;
                 case 5:
+                    System.out.println("Enter the name of the new Address Book:");
+                    String newAddressBookName = scanner.nextLine();
+                    addressBookSystem.addAddressBook(newAddressBookName);
+                    break;
+                case 6:
+                    addressBookSystem.displayAllAddressBooks();
+                    break;
+                case 7:
                     running = false;
                     System.out.println("Exiting Address Book. Goodbye!");
                     break;

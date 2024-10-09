@@ -13,6 +13,16 @@ public class AddressBook {
         System.out.println(al);
     }
 
+    public void displayAll() {
+        if (al.isEmpty()) {
+            System.out.println("Address book is empty.");
+        } else {
+            for (Contact contact : al) {
+                System.out.println(contact);
+            }
+        }
+    }
+
     public Contact findContact(String firstName, String lastName) {
         for (Contact contact : al) {
             if (contact.getFirstName().equalsIgnoreCase(firstName) &&
